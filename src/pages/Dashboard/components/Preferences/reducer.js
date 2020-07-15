@@ -15,16 +15,16 @@ export const reducer = (state, action) => {
       timers.countBackwards = action.payload;
       return { ...state };
     case "update-focusDuration":
-      timers.focusDuration = action.payload;
+      timers.focusDuration = 1 * action.payload;
       return { ...state };
     case "update-breakDuration":
-      timers.breakDuration = action.payload;
+      timers.breakDuration = 1 * action.payload;
       return { ...state };
     case "update-longBreakDuration":
-      timers.longBreakDuration = action.payload;
+      timers.longBreakDuration = 1 * action.payload;
       return { ...state };
     case "update-longBreakFrecuency":
-      timers.longBreakFrecuency = action.payload;
+      timers.longBreakFrecuency = 1 * action.payload;
       return { ...state };
     case "save-preferences":
       saveToLocalStorage('preferences', state.preferences);

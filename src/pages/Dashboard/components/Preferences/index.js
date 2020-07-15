@@ -72,8 +72,6 @@ const Preferences = () => {
   }
 
   return (
-    <>
-    
     <PreferecesUI
       onSetTheme={onSetTheme}
       onEnableTic={onEnableTic}
@@ -87,8 +85,6 @@ const Preferences = () => {
       state={state}
       themeOptions={themeOptions}
     />
-
-    </>
   );
 }
  

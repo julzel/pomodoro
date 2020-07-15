@@ -3,15 +3,17 @@ import React from 'react';
 // local imports
 import Timer from './components/Timer';
 
-const Pomodoro = ({ events }) => {
+const Pomodoro = ({ events, settings }) => {
 
   const { onSave, onDelete} = events;
+  // const { countBackwards, focusDuration, breakDuration, longBreakDuration, longBreakFrecuency } = settings;
+  const { countBackwards, focusDuration } = settings;
 
   return (
     <div className="pomodoro">
       <Timer
-        countTo={25}
-        countBackwards={true}
+        countTo={focusDuration}
+        countBackwards={countBackwards}
       />
       <div className="pomodoro-controls">
         {onSave &&
