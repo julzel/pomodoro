@@ -6,19 +6,19 @@ import Pomodoro from '../../../../components/Pomodoro'
 
 const SimplePomodoro = () => {
 
-  const onSavePomodoro = () => {
-    eventSubject.updateEvents('saving pomodoro');
-  };
-
-  const onDeletePomodoro = () => {
-    eventSubject.updateEvents('deleting pomodoro');
+  const events = {
+    onSavePomodoro: () => {
+      eventSubject.updateEvents('saving pomodoro');
+    },
+    onDeletePomodoro: () => {
+      eventSubject.updateEvents('deleting pomodoro');
+    }
   };
 
   return (
     <div>
       <Pomodoro
-        onSave={onSavePomodoro}
-        onDelete={onDeletePomodoro}
+        events={events}
       />
     </div>
   );

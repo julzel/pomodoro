@@ -3,7 +3,9 @@ import React from 'react';
 // local imports
 import Timer from './components/Timer';
 
-const Pomodoro = ({ onSave, onDelete }) => {
+const Pomodoro = ({ events }) => {
+
+  const { onSave, onDelete} = events;
 
   return (
     <div className="pomodoro">

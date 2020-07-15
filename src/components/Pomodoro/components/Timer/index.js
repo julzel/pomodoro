@@ -16,7 +16,7 @@ const getInitialState = (counting, counter) => {
 
 const init = initialState => initialState;
 
-const Timer = ({ onStart, onPause, onStop, countTo, countBackwards, autoStart }) => {
+const Timer = ({ onStart, onPause, onStop, onEnd, countTo, countBackwards, autoStart }) => {
 
   const [state, dispatch] = useReducer(reducer, getInitialState(!!autoStart, countBackwards ? countTo : 0), init);
 
@@ -36,6 +36,10 @@ const Timer = ({ onStart, onPause, onStop, countTo, countBackwards, autoStart })
     dispatch({ type: 'stop', payload: getInitialState(!!autoStart, countBackwards ? countTo : 0) });
     onStop && onStop();
   };
+
+  const handleEnd = () => {
+    onEnd && onEnd();
+  }
 
   const handleTimeCount = () => {
     if (state.counting) {
@@ -72,6 +76,7 @@ const Timer = ({ onStart, onPause, onStop, countTo, countBackwards, autoStart })
       handleStart={handleStart}
       handlePause={handlePause}
       handleStop={handleStop}
+      handleEnd={handleEnd}
     />
   );
 }
