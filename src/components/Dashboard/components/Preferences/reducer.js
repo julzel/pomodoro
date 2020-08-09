@@ -28,7 +28,7 @@ export const reducer = (state, action) => {
       return { ...state };
     case "save-preferences":
       saveToLocalStorage('preferences', state.preferences);
-      return { ...state, preferencesUpdated: true };
+      return { preferencesUpdated: true };
     case "reset-preferences":
       saveToLocalStorage('preferences', action.payload);
       return action.payload;

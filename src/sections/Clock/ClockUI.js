@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const PomodoroUI = () => (
+export const ClockUI = () => (
   <div className="pomodoro-ui">
    
   </div>

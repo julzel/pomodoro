@@ -10,6 +10,8 @@ export const reducer = (state, action) => {
       return { ...state, counter: state.counter + 1 }
     case 'decrement': 
       return { ...state, counter: state.counter - 1 }
+    case 'update-counter':
+      return { ...state, counter: action.payload * 60 }
     default:
       throw new Error();
   }

@@ -1,28 +1,29 @@
 import React, { createContext, useState, useEffect } from "react";
-import { defaultPreferences } from "../config";
+
+// local imports
+import preferencesSubject from "../observers/preferencesObserver";
 import { getFromLocalStorage, saveToLocalStorage } from "../util";
+import { defaultPreferences } from "../config";
 
 const PreferencesContextProvider = ({ children }) => {
   const [preferences, setPreferences] = useState(defaultPreferences);
-  const [foundLocalPreferences, setFoundLocalPreferences] = useState(false)
+  const onPreferencesUpdate = (preferences) =>
+    setPreferences({ ...preferences });
 
   useEffect(() => {
     const localPreferences = getFromLocalStorage("preferences");
     if (localPreferences) {
       setPreferences(localPreferences);
-      setFoundLocalPreferences(true)
     } else {
-      saveToLocalStorage(defaultPreferences);
+      setPreferences(defaultPreferences);
+      saveToLocalStorage("preferences", defaultPreferences);
     }
+    preferencesSubject.attach(onPreferencesUpdate);
+    return () => preferencesSubject.detach(onPreferencesUpdate);
   }, []);
 
   return (
-    <PreferencesContext.Provider
-      value={{
-        preferences,
-        foundLocalPreferences
-      }}
-    >
+    <PreferencesContext.Provider value={{ preferences, defaultPreferences }}>
       {children}
     </PreferencesContext.Provider>
   );

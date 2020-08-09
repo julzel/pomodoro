@@ -1,7 +1,7 @@
 import React from "react";
 
 // local imports
-import FormBlock from "../../../../components/FormBlock";
+import FormBlock from "../../components/FormBlock";
 
 const PreferecesUI = ({
   onSetTheme,
@@ -27,7 +27,7 @@ const PreferecesUI = ({
 
   return (
     <div className="preferences">
-      <h2>Preferences</h2>
+      <h1>Preferences</h1>
       
       <form className="form" onSubmit={onFormSubmit} onReset={onFormReset}>
         <div className="preferences-system">
@@ -91,10 +91,10 @@ const PreferecesUI = ({
           />
         </div>
         <div className="form_block">
-          <button type="submit" className="form-block_button" disabled={state.preferencesUpdated}>
+          <button type="submit" className="form-block_button">
             Save Changes
           </button>
-          <button type="reset" className="form-block_button" disabled={!state.preferencesUpdated}>
+          <button type="reset" className="form-block_button">
             Default
           </button>
         </div>
